@@ -22,7 +22,7 @@ class Command(BaseCommand):
                 User(**user)
             )
 
-        #User.objects.bulk_create(user_for_create)
+        User.objects.bulk_create(user_for_create)
 
         course_list = [
             {'name': 'Python', 'description': 'Начнем изучать Python и станем крутыми программистами'},
@@ -35,7 +35,7 @@ class Command(BaseCommand):
             course_for_create.append(
                 Course(**course)
             )
-        #Course.objects.bulk_create(course_for_create)
+        Course.objects.bulk_create(course_for_create)
 
         lesson_list = [
             {'name': 'ООП', 'description': 'Обьектно-ориентированное программирование', 'course': Course.objects.get(name='Python')},
@@ -54,7 +54,7 @@ class Command(BaseCommand):
             lesson_for_create.append(
                 Lesson(**lesson)
             )
-        #Lesson.objects.bulk_create(lesson_for_create)
+        Lesson.objects.bulk_create(lesson_for_create)
 
         payment_list = [
             {'user': User.objects.get(first_name='Ivan'), 'date_payment': timezone.now(), 'course': Course.objects.get(name='Python'), 'lesson': Lesson.objects.get(name='Doker'), 'payment': 1234.3, 'payment_method': 1},
