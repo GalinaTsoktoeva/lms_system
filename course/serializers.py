@@ -25,9 +25,10 @@ class LessonSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    last_payment = serializers.FloatField(source='payment_set.all.first.payment')
+    last_payment = serializers.FloatField(source='payment.all.first.payment')
     lesson = LessonSerializer(source='lesson_set', many=True)
-    payment = PaymentSerializer(source='payment_set', many=True)
+    payment = PaymentSerializer(many=True)
+
     class Meta:
         model = Course
         fields = '__all__'
