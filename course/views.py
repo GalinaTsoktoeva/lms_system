@@ -4,7 +4,7 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated
 
 from course.models import Course, Lesson, Payment
-from course.permissions import IsOwnerOrStaff, IsOwnerOrModerator, IsOwner, IsModerator
+from course.permissions import IsOwner, IsModerator
 from course.serializers import CourseSerializer, LessonSerializer, PaymentSerializer, \
     LessonPaymentSerializer, LessonCreateSerializer
 

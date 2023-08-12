@@ -6,11 +6,10 @@ from users.models import UserRoles
 class IsOwner(BasePermission):
     message = "Вы не являетесь владельцем"
 
-    def has_permission(self, request, view):
-        if request.user.is_staff:
+    def has_object_permission(self, request, view, obj):
+        if request.user == obj.owner:
             return True
-
-        return request.user == view.get_object().owner
+        return False
 
 
 class IsModerator(BasePermission):
