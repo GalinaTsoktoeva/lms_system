@@ -1,0 +1,328 @@
+[
+    {
+        "id": 1,
+        "last_payment": 1234.3,
+        "lesson": [
+            {
+                "id": 1,
+                "payment": [],
+                "last_payment": 0,
+                "name": "ООП",
+                "img": null,
+                "description": "Обьектно-ориентированное программирование",
+                "link_video": null,
+                "course": 1,
+                "owner": null
+            },
+            {
+                "id": 2,
+                "payment": [
+                    {
+                        "id": 29,
+                        "date_payment": "2023-08-12T14:14:42.802707Z",
+                        "payment": 1000.3,
+                        "payment_method": 2,
+                        "user": 24,
+                        "course": 1,
+                        "lesson": 2
+                    }
+                ],
+                "last_payment": 1000.3,
+                "name": "База данных",
+                "img": null,
+                "description": "Изучим базы данных",
+                "link_video": null,
+                "course": 1,
+                "owner": null
+            },
+            {
+                "id": 3,
+                "payment": [
+                    {
+                        "id": 27,
+                        "date_payment": "2023-08-12T14:14:42.796820Z",
+                        "payment": 234.3,
+                        "payment_method": 2,
+                        "user": 27,
+                        "course": 1,
+                        "lesson": 3
+                    }
+                ],
+                "last_payment": 234.3,
+                "name": "Django",
+                "img": null,
+                "description": "как писать сайты на фрейморке Django",
+                "link_video": null,
+                "course": 1,
+                "owner": null
+            }
+        ],
+        "payment": [
+            {
+                "id": 24,
+                "date_payment": "2023-08-12T14:14:42.788390Z",
+                "payment": 1234.3,
+                "payment_method": 1,
+                "user": 24,
+                "course": 1,
+                "lesson": 6
+            },
+            {
+                "id": 27,
+                "date_payment": "2023-08-12T14:14:42.796820Z",
+                "payment": 234.3,
+                "payment_method": 2,
+                "user": 27,
+                "course": 1,
+                "lesson": 3
+            },
+            {
+                "id": 29,
+                "date_payment": "2023-08-12T14:14:42.802707Z",
+                "payment": 1000.3,
+                "payment_method": 2,
+                "user": 24,
+                "course": 1,
+                "lesson": 2
+            }
+        ],
+        "subscribe": false,
+        "name": "Python",
+        "img": null,
+        "description": "Начнем изучать Python и станем крутыми программистами",
+        "owner": null
+    },
+    {
+        "id": 2,
+        "last_payment": 123.3,
+        "lesson": [
+            {
+                "id": 6,
+                "payment": [
+                    {
+                        "id": 24,
+                        "date_payment": "2023-08-12T14:14:42.788390Z",
+                        "payment": 1234.3,
+                        "payment_method": 1,
+                        "user": 24,
+                        "course": 1,
+                        "lesson": 6
+                    },
+                    {
+                        "id": 30,
+                        "date_payment": "2023-08-12T14:14:42.805368Z",
+                        "payment": 1200.3,
+                        "payment_method": 1,
+                        "user": 25,
+                        "course": 2,
+                        "lesson": 6
+                    }
+                ],
+                "last_payment": 1234.3,
+                "name": "DRF 7",
+                "img": null,
+                "description": "Doker",
+                "link_video": null,
+                "course": 2,
+                "owner": 27
+            },
+            {
+                "id": 4,
+                "payment": [
+                    {
+                        "id": 25,
+                        "date_payment": "2023-08-12T14:14:42.790383Z",
+                        "payment": 123.3,
+                        "payment_method": 2,
+                        "user": 25,
+                        "course": 2,
+                        "lesson": 4
+                    }
+                ],
+                "last_payment": 123.3,
+                "name": "ООП",
+                "img": null,
+                "description": "Обьектно-ориентированное программирование",
+                "link_video": null,
+                "course": 2,
+                "owner": null
+            },
+            {
+                "id": 5,
+                "payment": [
+                    {
+                        "id": 32,
+                        "date_payment": "2023-08-12T14:14:42.811378Z",
+                        "payment": 934.3,
+                        "payment_method": 2,
+                        "user": 27,
+                        "course": 2,
+                        "lesson": 5
+                    }
+                ],
+                "last_payment": 934.3,
+                "name": "База данных",
+                "img": null,
+                "description": "Изучим базы данных",
+                "link_video": null,
+                "course": 2,
+                "owner": null
+            }
+        ],
+        "payment": [
+            {
+                "id": 25,
+                "date_payment": "2023-08-12T14:14:42.790383Z",
+                "payment": 123.3,
+                "payment_method": 2,
+                "user": 25,
+                "course": 2,
+                "lesson": 4
+            },
+            {
+                "id": 30,
+                "date_payment": "2023-08-12T14:14:42.805368Z",
+                "payment": 1200.3,
+                "payment_method": 1,
+                "user": 25,
+                "course": 2,
+                "lesson": 6
+            },
+            {
+                "id": 32,
+                "date_payment": "2023-08-12T14:14:42.811378Z",
+                "payment": 934.3,
+                "payment_method": 2,
+                "user": 27,
+                "course": 2,
+                "lesson": 5
+            }
+        ],
+        "subscribe": false,
+        "name": "Java",
+        "img": null,
+        "description": "Начнем изучать Java и станем крутыми программистами",
+        "owner": null
+    },
+    {
+        "id": 3,
+        "last_payment": 34.3,
+        "lesson": [
+            {
+                "id": 7,
+                "payment": [
+                    {
+                        "id": 33,
+                        "date_payment": "2023-08-12T14:14:42.814320Z",
+                        "payment": 9034.3,
+                        "payment_method": 1,
+                        "user": 28,
+                        "course": 3,
+                        "lesson": 7
+                    }
+                ],
+                "last_payment": 9034.3,
+                "name": "auto testy",
+                "img": null,
+                "description": "auto testy",
+                "link_video": null,
+                "course": 3,
+                "owner": null
+            },
+            {
+                "id": 8,
+                "payment": [
+                    {
+                        "id": 26,
+                        "date_payment": "2023-08-12T14:14:42.793375Z",
+                        "payment": 34.3,
+                        "payment_method": 1,
+                        "user": 26,
+                        "course": 3,
+                        "lesson": 8
+                    },
+                    {
+                        "id": 28,
+                        "date_payment": "2023-08-12T14:14:42.799359Z",
+                        "payment": 123.3,
+                        "payment_method": 1,
+                        "user": 27,
+                        "course": 3,
+                        "lesson": 8
+                    }
+                ],
+                "last_payment": 34.3,
+                "name": "Ручное тестирование",
+                "img": null,
+                "description": "изучим мануальное тестирование",
+                "link_video": null,
+                "course": 3,
+                "owner": null
+            },
+            {
+                "id": 9,
+                "payment": [
+                    {
+                        "id": 31,
+                        "date_payment": "2023-08-12T14:14:42.808485Z",
+                        "payment": 12.0,
+                        "payment_method": 1,
+                        "user": 26,
+                        "course": 3,
+                        "lesson": 9
+                    }
+                ],
+                "last_payment": 12.0,
+                "name": "UNIT тесты",
+                "img": null,
+                "description": "UNIT тесты",
+                "link_video": null,
+                "course": 3,
+                "owner": null
+            }
+        ],
+        "payment": [
+            {
+                "id": 26,
+                "date_payment": "2023-08-12T14:14:42.793375Z",
+                "payment": 34.3,
+                "payment_method": 1,
+                "user": 26,
+                "course": 3,
+                "lesson": 8
+            },
+            {
+                "id": 28,
+                "date_payment": "2023-08-12T14:14:42.799359Z",
+                "payment": 123.3,
+                "payment_method": 1,
+                "user": 27,
+                "course": 3,
+                "lesson": 8
+            },
+            {
+                "id": 31,
+                "date_payment": "2023-08-12T14:14:42.808485Z",
+                "payment": 12.0,
+                "payment_method": 1,
+                "user": 26,
+                "course": 3,
+                "lesson": 9
+            },
+            {
+                "id": 33,
+                "date_payment": "2023-08-12T14:14:42.814320Z",
+                "payment": 9034.3,
+                "payment_method": 1,
+                "user": 28,
+                "course": 3,
+                "lesson": 7
+            }
+        ],
+        "subscribe": false,
+        "name": "Тестирование",
+        "img": null,
+        "description": "Начнем изучать Тестирование и станем крутыми тестировщиками",
+        "owner": null
+    }
+]
