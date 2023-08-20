@@ -33,6 +33,7 @@ class Lesson(models.Model):
     link_video = models.CharField(max_length=150, verbose_name='ссылка на видео', **NULLABLE)
     course = models.ForeignKey(Course, on_delete=models.SET_NULL, verbose_name='курс', related_name='lessons', **NULLABLE)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE)
+
     def __str__(self):
         return f'{self.name}'
 
@@ -42,6 +43,9 @@ class Lesson(models.Model):
 
 
 class Payment(models.Model):
+
+    CASH = 'cash'
+    TRANSFER = 'transfer'
 
     TITLE_CHOICES_PAYMENT_METHOD = [
         (1, 'Наличные'),
@@ -54,6 +58,9 @@ class Payment(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, **NULLABLE, verbose_name='оплаченный урок', related_name='payment')
     payment = models.FloatField(verbose_name='сумма оплаты')
     payment_method = models.PositiveSmallIntegerField(choices=TITLE_CHOICES_PAYMENT_METHOD, default=1, verbose_name='способ оплаты')
+    stripe_payment_id = models.CharField(max_length=255, verbose_name='id платежа stripe', **NULLABLE,)
+    status = models.CharField(max_length=10, verbose_name='статус платежа', default='open',)
+    stripe_payment_url = models.TextField(verbose_name='id платежа stripe', **NULLABLE, )
 
     def __str__(self):
         return f'{self.user} {self.payment} {self.date_payment}'

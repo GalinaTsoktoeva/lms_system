@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from course.models import Course, Lesson, Payment, Subscription
+#from course.services import get_payment
 from course.validators import LinkVideoValidator
 
 
@@ -12,6 +13,7 @@ class SubscribeSerializer(serializers.ModelSerializer):
 
 
 class PaymentSerializer(serializers.ModelSerializer):
+    #amount = serializers.SerializerMethodField()
 
     class Meta:
         model = Payment
@@ -80,3 +82,9 @@ class LessonCreateSerializer(serializers.ModelSerializer):
 
             return lesson_item
         return validated_data
+
+
+class PaymentCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment
+        fields = '__all__'

@@ -1,13 +1,17 @@
+import stripe
+from django.conf import settings
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
 from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
 
 from course.models import Course, Lesson, Payment
 from course.paginators import CoursePaginator
 from course.permissions import IsOwner, IsModerator
 from course.serializers import CourseSerializer, LessonSerializer, PaymentSerializer, \
-    LessonPaymentSerializer, LessonCreateSerializer, SubscribeSerializer
+    LessonPaymentSerializer, LessonCreateSerializer, SubscribeSerializer, PaymentCreateSerializer
+from course.services import get_lesson_or_course
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -62,7 +66,39 @@ class LessonDestroyAPIView(generics.DestroyAPIView):
 
 
 class PaymentCreateAPIView(generics.CreateAPIView):
-    serializer_class = PaymentSerializer
+    serializer_class = PaymentCreateSerializer
+    permission_classes = [AllowAny]
+
+    def create(self, request, *args, **kwargs):
+
+        #print(request.data.get('payment'))
+        prod = request.data.get('payment')
+        product = get_lesson_or_course(prod.get('lesson'), prod.get('course'))
+
+        stripe.api_key = settings.PAY_API_KEY
+
+        response = stripe.PaymentIntent.create(
+            amount=prod.get('payment'),
+            currency="rub",
+            automatic_payment_methods={"enabled": True},
+        )
+        stripe.PaymentIntent.confirm(
+            response.id,
+            payment_method='pm_card_visa',
+        )
+        user = self.request.user
+        payment_id = response.id
+        data = {
+            "stripe_payment_id": payment_id,
+            "user": user,
+            "status": response.status,
+            "stripe_payment_url": response.url
+        }
+        #print(response)
+        serializer = self.get_serializer(data=data)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
 
 
 class LessonPaymentListAPIView(generics.ListAPIView):
