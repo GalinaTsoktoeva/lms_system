@@ -6,12 +6,13 @@ from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
-from course.models import Course, Lesson, Payment
+from course.models import Course, Lesson, Payment, Subscription
 from course.paginators import CoursePaginator
 from course.permissions import IsOwner, IsModerator
 from course.serializers import CourseSerializer, LessonSerializer, PaymentSerializer, \
     LessonPaymentSerializer, LessonCreateSerializer, SubscribeSerializer, PaymentCreateSerializer
-from course.services import get_lesson_or_course
+from course.services import get_lesson_or_course, get_email
+from course.tasks import send_update_course
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -31,6 +32,12 @@ class CourseViewSet(viewsets.ModelViewSet):
         if self.request.user.groups.filter(name='moderator').exists():
             return Course.objects.all()
         return Course.objects.filter(owner=self.request.user)
+
+    def update(self, request, *args, **kwargs):
+        subscrions = Subscription.objects.filter(user=request.user)
+        emails = get_email(subscrions)
+        send_update_course(emails)
+        return super().update(request, *args, **kwargs)
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

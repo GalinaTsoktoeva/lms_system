@@ -1,14 +1,30 @@
 import os
+from datetime import datetime, timedelta
 
-import stripe
-from django.conf import settings
-from rest_framework import serializers
+from django_celery_beat.models import PeriodicTask, IntervalSchedule
+
+from rest_framework.utils import json
 
 from course.models import Course, Lesson
-from course.models import Payment
 
 
 
+def set_shedule():
+
+    schedule, created = IntervalSchedule.objects.get_or_create(
+        every=1,
+        period=IntervalSchedule.MINUTES,
+    )
+    PeriodicTask.objects.create(
+        interval=schedule,  # we created this above.
+        name='Importing contacts',  # simply describes this periodic task.
+        task='course.tasks.block_user',  # name of task.
+        args=json.dumps(['arg1', 'arg2']),
+        kwargs=json.dumps({
+            'be_careful': True,
+        }),
+        expires=datetime.utcnow() + timedelta(seconds=30)
+    )
 
 
 def get_lesson_or_course(
@@ -19,3 +35,8 @@ def get_lesson_or_course(
 
     return Lesson.objects.get(pk=paid_lesson_id)
 
+def get_email(user):
+    emails = []
+    for item in user:
+        emails.append(item.user.email)
+    return emails
