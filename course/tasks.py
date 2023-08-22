@@ -15,7 +15,7 @@ def send_update_course(emails: list) -> None:
 
 
 @shared_task()
-def block_user():
+def block_user(*args, **kwargs):
     tz = pytz.timezone('Europe/Moscow')
     users = User.objects.all()
     for user in users:
