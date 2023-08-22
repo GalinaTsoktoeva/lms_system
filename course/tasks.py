@@ -11,7 +11,7 @@ from users.models import User
 @shared_task
 def send_update_course(emails: list) -> None:
 
-    send_mail(subject="Курс обновлен!", message="Course update",from_email=settings.EMAIL_HOST_USER, recipient_list=emails)
+    send_mail(subject="Курс обновлен!", message="Course update", from_email=settings.EMAIL_HOST_USER, recipient_list=emails)
 
 
 @shared_task()
